@@ -1,0 +1,5 @@
+app_name: Google\ Chrome
+app_url: https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg
+app_install_method: dmg
+app_mount_path: /Volumes/Google\ Chrome/
+app_reinstall: false
