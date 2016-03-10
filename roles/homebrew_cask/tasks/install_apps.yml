@@ -1,0 +1,3 @@
+- name: Install {{ item }}
+  shell: "/usr/local/bin/brew cask install {{ item }}"
+  with_items: "{{ cask_applications }}"

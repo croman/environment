@@ -1,0 +1,9 @@
+- name: Check if homebrew cask in already installed
+  shell: "brew info brew-cask > /dev/null 2>&1; echo $?"
+  register: brew_cask_installed
+
+- name: Install homebrew cask
+  include: install_cask.yml
+  when: (not brew_cask_installed.stdout)
+
+- include: install_apps.yml
