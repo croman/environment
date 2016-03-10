@@ -1,1 +1,0 @@
-- include: files/install/{{ app_install_method }}.yml

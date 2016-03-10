@@ -1,2 +1,5 @@
 cask_applications:
   - vagrant
+  - virtualbox
+  - firefox
+  - google-chrome

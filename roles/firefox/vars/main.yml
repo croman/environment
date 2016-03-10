@@ -1,5 +1,0 @@
-app_name: Firefox
-app_url: https://download.mozilla.org/?product=firefox-latest&os=osx&lang=en-US
-app_install_method: dmg
-app_mount_path: /Volumes/Firefox/
-app_reinstall: false
