@@ -1,0 +1,23 @@
+- name: Make sure Homebrew directory exists
+  file: path=/usr/local state=directory mode=0775 owner=root group=admin recurse=yes
+  become: yes
+
+- name: Install Homebrew with git
+  git: repo=https://github.com/Homebrew/homebrew.git dest=/usr/local version=master force=yes clone=yes update=yes
+
+- name: Set permissions for multiple users to Homebrew paths
+  file: path={{ item }} mode=0775 owner=root group=admin recurse=yes state=directory
+  become: yes
+  with_items: "{{ homebrew_paths }}"
+
+- name: Fix ACL permissions for multiple users
+  become: yes
+  command: 'chmod -R +a "group:admin allow list,add_file,search,delete,add_subdirectory,delete_child,readattr,writeattr,readextattr,writeextattr,readsecurity,file_inherit,directory_inherit" {{ item }}'
+  with_items: "{{ homebrew_paths }}"
+
+- name: Reset the Homebrew Library repo
+  git: repo=https://github.com/Homebrew/homebrew.git dest=/usr/local/Library clone=no update=yes force=yes
+
+- name: Update Homebrew
+  homebrew: update_homebrew=yes
+  become: no
