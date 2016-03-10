@@ -1,0 +1,11 @@
+- name: Get the XCode path
+  shell: "xcode-select -p > /dev/null 2>&1; echo $?"
+  register: cmd_installed
+
+- name: Set the permissions on the install script
+  copy: src=install_tools.sh dest=/tmp/install_tools.sh mode=0755
+  when: (cmd_installed.stdout == "2")
+
+- name: Install the command line tools
+  shell: /tmp/install_tools.sh
+  when: (cmd_installed.stdout == "2")
