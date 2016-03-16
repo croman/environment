@@ -1,0 +1,7 @@
+- name: Clone dotfiles repository
+  git: repo=https://github.com/croman/dotfiles.git dest={{ home }}/.dotfiles
+  become: no
+
+- name: Install the dotfiles
+  shell: source bootstrap.sh chdir={{ home }}/.dotfiles
+  become: no
