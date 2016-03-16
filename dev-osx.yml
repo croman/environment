@@ -1,8 +1,0 @@
-- hosts: local
-  become: true
-  become_method: sudo
-
-  roles:
-    - download
-    - firefox
-    - chrome

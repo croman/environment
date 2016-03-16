@@ -1,2 +1,0 @@
-- name: Create Ansible downloads directory
-  file: path={{ downloads }} state=directory mode=0755
