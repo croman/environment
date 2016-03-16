@@ -1,0 +1,17 @@
+- hosts: all
+
+  become: true
+  become_method: sudo
+
+  vars:
+    home: "/Users/{{ ansible_env.SUDO_USER }}"
+    user: "{{ ansible_env.SUDO_USER }}"
+    group: "staff"
+
+  roles:
+    - common
+    - cmd_tools
+    - homebrew
+    - homebrew_cask
+    - oh_my_zsh
+    - dotfiles
