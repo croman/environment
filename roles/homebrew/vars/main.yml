@@ -1,0 +1,12 @@
+brew_applications:
+  - ngrep
+  - zsh
+  - coreutils
+  - moreutils
+  - findutils
+  - gnu-sed --with-default-names
+  - bash
+  - vim --override-system-vi
+  - homebrew/dupes/grep
+  - homebrew/dupes/openssh
+  - wget --with-iri

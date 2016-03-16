@@ -1,7 +1,17 @@
-- name: Check if homebrew in already installed
-  shell: "which brew > /dev/null 2>&1; echo $?"
+- name: Check if homebrew is already installed
+  shell: which brew
   register: brew_installed
+  environment:
+    PATH: "/usr/local/bin:/usr/bin"
 
 - name: Install homebrew
   include: install_brew.yml
-  when: (not brew_installed.stdout)
+  when: brew_installed.rc != 0
+
+- name: Upgrade any already-installed formulae
+  shell: /usr/local/bin/brew upgrade --all
+
+- include: install_apps.yml
+
+- name: Brew cleanup
+  shell: /usr/local/bin/brew cleanup
