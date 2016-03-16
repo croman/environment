@@ -1,3 +1,11 @@
-- name: Install {{ item }}
-  shell: "/usr/local/bin/brew cask install {{ item }}"
+- set_fact: cask_options=""
+
+- name: Install tools
+  include: install_app.yml
+  with_items: "{{ cask_tools }}"
+
+- set_fact: cask_options="--appdir='/Applications'"
+
+- name: Install applications
+  include: install_app.yml
   with_items: "{{ cask_applications }}"

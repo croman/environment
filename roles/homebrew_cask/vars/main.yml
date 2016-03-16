@@ -1,5 +1,16 @@
-cask_applications:
+cask_tools:
   - vagrant
-  - virtualbox
+
+cask_applications:
+  - eclipse-jee
   - firefox
   - google-chrome
+  - iterm2
+  - java
+  - mysqlworkbench
+  - skype
+  - slack
+  - spotify
+  - transmission
+  - virtualbox
+  - vlc
